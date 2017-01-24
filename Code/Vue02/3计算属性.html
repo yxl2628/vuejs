@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>语法模板-指令</title>
+</head>
+<body>
+<div id="example">
+  <p>Original message: "{{ message }}"</p>
+  <p>Computed reversed message: "{{ reversedMessage }}"</p>
+  <p>
+    Ask a yes/no question:
+    <input v-model="question">
+  </p>
+  <p>{{answer}}</p>
+</div>
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+	  el: '#example',
+	  data: {
+	    message: 'Hello',
+	    question: '',
+    	answer: '请先输入您要提问的问题!'
+	  },
+	  computed: {
+	    reversedMessage: function () {
+	      return this.message.split('').reverse().join('')
+	    }
+	  },
+	  watch: {
+	    question: function (newQuestion) {
+	      this.answer = 'Waiting for you to stop typing...'
+	      this.getAnswer()
+	    }
+	  },
+	  methods: {
+	    getAnswer: function () {
+	        var vm = this
+	        if (this.question.indexOf('?') === -1) {
+	          vm.answer = '要以"?"结尾,我才会认为您要提问的问题问完了'
+	          return
+	        }
+	        vm.answer = '正确答案显示出来了';
+	      }
+	   }
+	})
+</script>
+</body>
+</html>

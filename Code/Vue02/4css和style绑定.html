@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css和style绑定</title>
+<style type="text/css">
+	h5{padding: 10px;}span{padding: 10px;}
+	.active{border:1px solid red;}
+	.text-danger{color:red}
+</style>
+</head>
+<body>
+<div id="demo">
+	
+	<h5><span :class="{active:isActive}">绑定一个class,active=true</span> | <span :class="{active:flaseActive}">绑定一个class,active=false</span></h5>
+	<h5><span :class="{active:isActive,'text-danger':isError}">可以绑定多个class</span></h5>
+	<h5><span :class="[activeClass,errorClass]">可以绑定一个数组</span></h5>
+	<h5><span v-bind:style="{ color:activeColor, fontSize:fontSize + 'px' }">绑定v-bind:style</span></h5>
+	<h5><span v-bind:style="[colorStyle, fontStyle]">数组语法 v-bind:style</span></h5>
+</div>
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#demo',
+		data:{
+			isActive:true,
+			flaseActive:false,
+			isError:true,
+			activeClass:'active',
+			errorClass:'text-danger',
+			activeColor:'red',
+			fontSize:16,
+			colorStyle:{'color':'green'},
+			fontStyle:{'font-size':'16px'}
+		}
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>条件渲染</title>
+<style type="text/css">
+	h1,h5,p,div{padding: 10px;}
+</style>
+</head>
+<body>
+<div id="demo">
+	<h1 v-if="ok">单独使用v-if</h1>
+	<h1 v-if="ok">也可以和v-else一起使用,true时显示</h1>
+	<h1 v-else>也可以和v-else一起使用,这行是false时显示</h1>
+	<template v-if="ok">
+	  <h1>template显示1</h1>
+	  <p>template显示1.1</p>
+	  <p>template显示1.2</p>
+	</template>
+	<div v-if="Math.random() > 0.5">随机大于0.5</div>
+	<div v-else>随机小于0.5</div>
+	<div v-show="ok">如果ok为false,这个也会被渲染,只不过会增加display:none这个属性而已</div>
+</div>
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#demo',
+		data:{
+			ok:true
+		}
+	});
+</script>
+</body>
+</html>

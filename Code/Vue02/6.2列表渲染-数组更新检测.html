@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>列表渲染-数组更新检测</title>
+<style type="text/css">h1,h5,p,div{padding: 10px;}</style>
+</head>
+<body>
+<div id="example">
+<h1>过滤-使用计算属性</h1>
+<li v-for="n in evenNumbers">{{ n }}</li>
+<h1>过滤-使用method</h1>
+<li v-for="n in even(numbers)">{{ n }}</li>
+</div>	
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var example = new Vue({
+	  el: '#example',
+	  data: {
+			numbers: [ 1, 2, 3, 4, 5 ]
+		},
+	  computed: {
+		  evenNumbers: function () {
+		    return this.numbers.filter(function (number) {
+		      return number % 2 === 0
+		    })
+		  }
+		},
+	  methods: {
+		  even: function (numbers) {
+		    return numbers.filter(function (number) {
+		      return number % 2 === 0
+		    })
+		  }
+		}
+	})
+</script>
+</body>
+</html>

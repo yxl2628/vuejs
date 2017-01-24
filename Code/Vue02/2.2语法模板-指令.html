@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>语法模板-指令</title>
+</head>
+<body>
+<div id="demo">
+<h1>绑定</h1>
+<h5>直接使用,src加载在js执行之前,会导致页面有错误<img src="{{imgpath}}" width="50px"/>	</h5>
+<h5>可以使用v-bind(简写:)<img :src="imgpath"  width="50px"/>	</h5>
+<h5><button @click="showMe">使用v-on(简写@)绑定事件</button></h5>
+<h1>修饰符</h1>
+<h5><form v-on:submit><button type="submit">提交会重载页面</button></form></h5>
+<h5><form v-on:submit.prevent><button type="submit">提交阻止重载页面</button></form></h5>
+</div>	
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#demo',
+		data:{
+			imgpath: 'cat.jpg'
+		},
+		methods:{
+			showMe:function(){
+				alert('点击了按钮');
+			}
+		}
+	});
+</script>
+</body>
+</html>

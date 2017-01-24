@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>语法模板-插值</title>
+	</head>
+	<body>
+		<div id="demo">
+			<h1>文本</h1>
+			<h5>纯文本输出:{{msg}}</h5>
+			<input type="text" v-model="msg" />
+			<h1>纯html</h1>
+			<h5>{{html}}</h5>
+			<h5 v-html="html"></h5>
+			<h1>使用javascript表达式</h1>
+			<h5>num:{{num}}</h5>
+			<h5>num+10:{{num+10}}</h5>
+			<h5>三目运算符:{{ok?'true':'false'}}</h5>
+			<h1>过滤器</h1>
+			<h5>原始数据msg:{{msg}}</h5>
+			<h5>A过滤:{{msg | filterA}}</h5>
+			<h5>B过滤:{{msg | filterB}}</h5>
+			<h5>A、B过滤:{{msg | filterA | filterB}}</h5>
+		</div>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#demo',
+				data:{
+					msg:'hello vue.js',
+					html:'<span style="color:red">测试html输出</span>',
+					num:12,
+					ok:'true'
+				},
+				filters:{
+					filterA:function(val){
+						return '增加了A过滤['+val+']'
+					},
+					filterB:function(val){
+						return '增加了B过滤['+val+']'
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

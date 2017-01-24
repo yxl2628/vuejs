@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件-自定义事件</title>
+	</head>
+	<body>
+		<div id="example">
+			<h1>基本用法</h1>
+			<child message="hello!"></child>
+			<h1> camelCase 转为 kebab-case</h1>
+			<child2 my-message="hello kebab-case!"></child2><!--html中使用kebab-case-->
+			<h1>动态props</h1>
+			<div>
+			  <input v-model="parentMsg"><br>
+			  <child2 :my-message="parentMsg"></child2>
+			</div>
+		</div>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component('child', {
+			  props: ['message'],// 声明 props
+			  template: '<span>{{ message }}</span>'// 就像 data 一样，prop 可以用在模板内,同样也可以在 vm 实例中像 “this.message” 这样使用
+			})
+			Vue.component('child2', {
+			  props: ['myMessage'],// camelCase in JavaScript
+			  template: '<span>{{ myMessage }}</span>'
+			})
+			Vue.component('example', {
+			  props: {
+			    propA: Number,// 基础类型检测 （`null` 意思是任何类型都可以）
+			    propB: [String, Number],// 多种类型
+			    propC: {// 必传且是字符串
+			      type: String,
+			      required: true
+			    },
+			    propD: {// 数字，有默认值
+			      type: Number,
+			      default: 100
+			    },
+			    propE: {// 数组／对象的默认值应当由一个工厂函数返回
+			      type: Object,
+			      default: function () {
+			        return { message: 'hello' }
+			      }
+			    },
+			    propF: {// 自定义验证函数
+			      validator: function (value) {
+			        return value > 10
+			      }
+			    }
+			  }
+			})
+			var vm = new Vue({
+			  el: '#example',
+			  data:{
+			  	parentMsg:''
+			  }
+			});
+		</script>
+	</body>
+</html>

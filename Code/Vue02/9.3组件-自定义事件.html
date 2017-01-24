@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件-使用solts分发</title>
+	</head>
+	<body>
+		<div id="example">
+			
+		</div>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+			  el: '#example',
+			  data: {
+			    total: 0,
+			    price:''
+			  },
+			  methods: {
+			    incrementTotal: function () {
+			      this.total += 1
+			    }
+			  }
+			});
+		</script>
+	</body>
+</html>

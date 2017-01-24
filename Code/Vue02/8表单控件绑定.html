@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>表单控件绑定</title>
+<style type="text/css">h1,h5,p,div{padding: 10px;}</style>
+</head>
+<body>
+<div id="example">
+<h1>单行文本</h1>
+<input v-model="message" placeholder="edit me">
+<p>Message is: {{ message }}</p>
+<h1>多行文本</h1>
+<span>Multiline message is:</span>
+<p style="white-space: pre">{{ message2 }}</p>
+<textarea v-model="message2" placeholder="add multiple lines"></textarea>
+<h1>复选框框</h1>
+<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+<label for="jack">Jack</label>
+<input type="checkbox" id="john" value="John" v-model="checkedNames">
+<label for="john">John</label>
+<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+<label for="mike">Mike</label>
+<span>Checked names: {{ checkedNames }}</span>
+<h1>单选按钮</h1>
+<input type="radio" id="one" value="One" v-model="picked">
+<label for="one">One</label><br>
+<input type="radio" id="two" value="Two" v-model="picked">
+<label for="two">Two</label><br>
+<span>Picked: {{ picked }}</span>
+<h1>单选列表</h1>
+<select v-model="selected">
+  <option>A</option><option>B</option><option>C</option>
+</select>
+<span>Selected: {{ selected }}</span>
+<h1>多选列表</h1>
+<select v-model="selected2" multiple>
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+</select><br>
+<span>Selected: {{ selected2 }}</span>
+<h1>修饰符</h1>
+<input v-model.lazy="msg" >
+<input v-model.number="age" type="number">
+<input v-model.trim="msg1">
+</div>	
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var example = new Vue({
+	  el: '#example',
+	  data: {
+	  	message:'',
+	  	message2:'',
+	  	checkedNames: [],
+	  	picked:'',
+	  	selected:'',
+	  	selected2:[],
+	  	msg:'',
+	  	msg1:'',
+	  	age:''
+	  },
+	  methods: {
+	  }
+	})
+</script>
+</body>
+</html>
