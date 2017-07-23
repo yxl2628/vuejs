@@ -63,13 +63,18 @@
 <script>
   export default {
     name : 'TimeEntries',
-    computed : {
-      plans () {
-        // 从store中取出数据
-        return this.$store.state.list
+    data(){
+      return {
+        plans:[]
       }
     },
+    created(){
+      this.getPlans();
+    },
     methods : {
+      getPlans(){
+        this.plans = this.$store.state.list;
+      },
       deletePlan(idx) {
         // 稍后再来说这里的方法
         // 减去总时间
